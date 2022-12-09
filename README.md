@@ -29,6 +29,21 @@ deptDF = spark.createDataFrame(data=dept, schema = deptColumns)
 deptDF.printSchema()
 deptDF.show(truncate=False)
 ```
+### 3. Create DataFrame (2)
+```
+#define schema
+from pyspark.sql.types import StructType,StructField, StringType, IntegerType, DoubleType
+schema = StructType([ \
+    StructField("id", IntegerType(), True), \
+    StructField("name",StringType(),True), \
+    StructField("grade", DoubleType(), True) \
+  ])
+data2 = [(100, "James", 80.0),
+    (101, "Michael", 75.5),
+    (102, "Robert", 90.2)
+  ]
+df = spark.createDataFrame(data=data2, schema=schema)
+```
 
 ## Maven
 ### 1. Create new project (Scala)
@@ -38,3 +53,13 @@ deptDF.show(truncate=False)
 ### 3. Build but Not running tests
 ```mvn package -DskipTests=true```
 
+## Docker
+### 1. Run docker with volume mount
+```
+# by docker Id
+docker run \
+-p 8080:8080  \
+-v /local/path/:/path/in/docker/ \
+bf3c64c34b80  \
+serve
+```
