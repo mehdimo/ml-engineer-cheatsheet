@@ -54,12 +54,25 @@ df = spark.createDataFrame(data=data2, schema=schema)
 ```mvn package -DskipTests=true```
 
 ## Docker
-### 1. Run docker with volume mount
+
+### Build docker image from a Dockerfile
+  - Change directory to the folder where `Dockerfile` resides.
+  - Run `docker build -t {your_image_name} .`
+    - `-t` tags your image as a human-readable name for the final image.
+    - The `.` at the end tells docker to look for Dockerfile inside the current folder.
+
+### Run docker container from image name
+ - `docker run --name {countainer_name} -p 8081:8081 {your_image_name}`
+   - `--name` assigns a name to the container. If not specified, a random name would be set.
+   - `-p` creates a port mapping between the host and the container.
+
+### Run docker with volume mount given the image Id
 ```
-# by docker Id
+# by docker image Id
 docker run \
 -p 8080:8080  \
 -v /local/path/:/path/in/docker/ \
 bf3c64c34b80  \
 serve
 ```
+ - `-v` maps local file/folder to a file/folder in container. 
