@@ -76,3 +76,21 @@ bf3c64c34b80  \
 serve
 ```
  - `-v` maps local file/folder to a file/folder in container. 
+
+## Documentation Tools
+
+### Convert .MOV/.MP4 video to .GIF
+* Install `ffmpeg` and `gifsicle` if not installed yet.
+```
+$brew install ffmpeg
+$brew install gifsicle
+```
+* Convert your file to gif:
+```
+$ffmpeg -i in.mov -pix_fmt rgb8 -r 10 output.gif && gifsicle -O3 output.gif -o output.gif
+```
+* Arguments:
+  - input path argument `-i`
+  - pixel format argument `-pix_fmt`
+  - removing some frames using framerate argument `-r`
+  - end `ffmpeg` with new path/to/filename
