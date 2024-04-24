@@ -1,5 +1,12 @@
 # ML Engineer Cheat Sheet
 
+## Python
+### 1. Virtual Environment
+```
+python -m venv ./venv
+. ./venv/bin/activate
+```
+
 ## PySpark
 ### 1. Create session and configuration
 ```
