@@ -7,6 +7,8 @@ python -m venv ./venv
 . ./venv/bin/activate
 ```
 * Run `deactivate` in the command line to deactivate the virtual env.
+* To show the path to the virtual env run:
+`echo $VIRTUAL_ENV`
 
 ## PySpark
 ### 1. Create session and configuration
